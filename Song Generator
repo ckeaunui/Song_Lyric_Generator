@@ -1,0 +1,15 @@
+import pandas as pd
+import os
+import glob
+
+
+def create_jazz_data():
+    jazz_path = '/Users/christiankeaunui/PycharmProjects/DataChallenge3/DC3/Jazz'
+    jazz_data = pd.DataFrame()
+
+    for file in glob.glob(os.path.join(jazz_path, '*.txt')):
+        with open(file, 'r') as f:
+            print(f.read().split("\n"))
+            jazz_data.append(f.read().split("\n"), ignore_index = True)
+    print(jazz_data)
+    return jazz_data
