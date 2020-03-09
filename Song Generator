@@ -3,13 +3,17 @@ import os
 import glob
 
 
-def create_jazz_data():
-    jazz_path = '/Users/christiankeaunui/PycharmProjects/DataChallenge3/DC3/Jazz'
-    jazz_data = pd.DataFrame()
+def create_data(genre):
+    path = '/Users/christiankeaunui/PycharmProjects/DataChallenge3/DC3/' + genre
+    data = pd.DataFrame()
 
-    for file in glob.glob(os.path.join(jazz_path, '*.txt')):
+    for file in glob.glob(os.path.join(path, '*.txt')):
         with open(file, 'r') as f:
-            print(f.read().split("\n"))
-            jazz_data.append(f.read().split("\n"), ignore_index = True)
-    print(jazz_data)
-    return jazz_data
+            data.append(pd.DataFrame(f.read().split("\n")))
+
+    print(data)
+    return data
+
+
+create_data("Jazz")
+
